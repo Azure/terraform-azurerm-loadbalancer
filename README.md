@@ -35,7 +35,7 @@ Usage
 
 ```hcl
 module "mylb" {
-  source   = "github.com/Azure/terraform-azurerm-loadbalancer"
+  source   = "Azure/loadbalancer/azurerm"
   location = "North Central US"
   "remote_port" {
     ssh = ["Tcp", "22"]
