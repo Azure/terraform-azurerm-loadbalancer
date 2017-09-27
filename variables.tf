@@ -74,8 +74,3 @@ variable "frontend_private_ip_address_allocation" {
   description = "Frontend ip allocation type (Static or Dynamic)"
   default = "Dynamic"
 }
-
-variable "lb_id" {
-  description = "ID of the loadBalancer"
-  default = ""
-}
