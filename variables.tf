@@ -63,14 +63,14 @@ variable "type" {
 }
 
 variable "frontend_subnet_id" {
-  description = "Frontend subnet id to use when in private mode"
+  description = "(Optional) Frontend subnet id to use when in private mode"
   default = ""
 }
 variable "frontend_private_ip_address" {
-  description = "Private ip address to assign to frontend. Use it with type = private"
+  description = "(Optional) Private ip address to assign to frontend. Use it with type = private"
   default = ""
 }
 variable "frontend_private_ip_address_allocation" {
-  description = "Frontend ip allocation type (Static or Dynamic)"
+  description = "(Optional) Frontend ip allocation type (Static or Dynamic)"
   default = "Dynamic"
 }
