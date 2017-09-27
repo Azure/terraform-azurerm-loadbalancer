@@ -6,6 +6,7 @@ resource "azurerm_resource_group" "azlb" {
 }
 
 resource "azurerm_public_ip" "azlb" {
+  count                        = "${var.type == "public" ? 1 : 0}"
   name                         = "${var.prefix}-publicIP"
   location                     = "${var.location}"
   resource_group_name          = "${azurerm_resource_group.azlb.name}"
@@ -13,14 +14,29 @@ resource "azurerm_public_ip" "azlb" {
 }
 
 resource "azurerm_lb" "azlb" {
+  # count                     = "${var.type == "public" ? 1 : 0}"
   name                      = "${var.prefix}-lb"  
   resource_group_name       = "${azurerm_resource_group.azlb.name}"
   location                  = "${var.location}"
   frontend_ip_configuration {
     name                 = "${var.frontend_name}"
-    public_ip_address_id = "${azurerm_public_ip.azlb.id}"
+    public_ip_address_id = "${var.type == "public" ? join("",azurerm_public_ip.azlb.*.id) : ""}"
+    subnet_id                     = "${var.frontend_subnet_id}"
+    private_ip_address            = "${var.frontend_private_ip_address}"
+    private_ip_address_allocation = "${var.frontend_private_ip_address_allocation}"
+
   }
 }
+
+# resource "azurerm_lb" "azlb" {
+#   count                     = "${var.type == "private" ? 1 : 0}"
+#   name                      = "${var.prefix}-lb"  
+#   resource_group_name       = "${azurerm_resource_group.azlb.name}"
+#   location                  = "${var.location}"
+#   frontend_ip_configuration {
+#     name                          = "${var.frontend_name}"
+#   }
+# }
 
 resource "azurerm_lb_backend_address_pool" "azlb" {
   resource_group_name = "${azurerm_resource_group.azlb.name}"

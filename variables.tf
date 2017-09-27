@@ -55,3 +55,27 @@ variable "tags" {
     source = "terraform"
   }
 }
+
+variable "type" {
+  type = "string"
+  description ="(Optional) Defined if the loadbalancer is private or public"
+  default = "public"
+}
+
+variable "frontend_subnet_id" {
+  description = "Frontend subnet id to use when in private mode"
+  default = ""
+}
+variable "frontend_private_ip_address" {
+  description = "Private ip address to assign to frontend. Use it with type = private"
+  default = ""
+}
+variable "frontend_private_ip_address_allocation" {
+  description = "Frontend ip allocation type (Static or Dynamic)"
+  default = "Dynamic"
+}
+
+variable "lb_id" {
+  description = "ID of the loadBalancer"
+  default = ""
+}
