@@ -13,9 +13,10 @@ resource "azurerm_public_ip" "azlb" {
 }
 
 resource "azurerm_lb" "azlb" {
-  name                      = "${var.prefix}-lb"  
-  resource_group_name       = "${azurerm_resource_group.azlb.name}"
-  location                  = "${var.location}"
+  name                = "${var.prefix}-lb"
+  resource_group_name = "${azurerm_resource_group.azlb.name}"
+  location            = "${var.location}"
+
   frontend_ip_configuration {
     name                 = "${var.frontend_name}"
     public_ip_address_id = "${azurerm_public_ip.azlb.id}"
