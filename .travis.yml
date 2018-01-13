@@ -13,12 +13,12 @@ services:
   - docker
 
 env:
-  - IMAGE_NAME=azure-loadbalancer-module
+  - TERRAFORM_VERSION=0.11.1 IMAGE_NAME=azure-loadbalancer-module
 
 jobs:
   include:
     - stage: rake build
       install: true
       script:
-      - docker build -t ${IMAGE_NAME} .
+      - docker build --biuld-arg BUILD_TERRAFORM_VERSION=${TERRAFORM_VERSION} -t ${IMAGE_NAME} .
       - docker run ${IMAGE_NAME} rake build
