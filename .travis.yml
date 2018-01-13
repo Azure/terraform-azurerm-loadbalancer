@@ -13,7 +13,7 @@ services:
   - docker
 
 env:
-  - TERRAFORM_VERSION=0.11.1 IMAGE_NAME=azure-loadbalancer-module
+  - IMAGE_NAME=azure-loadbalancer-module
 
 jobs:
   include:
