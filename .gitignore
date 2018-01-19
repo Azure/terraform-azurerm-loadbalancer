@@ -10,7 +10,6 @@ terraform.tfvars
 # Module directory
 .terraform/
 
-
 ### https://raw.github.com/github/gitignore/abad92dac5a4306f72242dae3bca6e277bce3615/Global/Vim.gitignore
 
 # swap
@@ -18,13 +17,25 @@ terraform.tfvars
 [._]s[a-w][a-z]
 # session
 Session.vim
+
 # temporary
 .netrwhist
 *~
+
 # auto-generated tag files
 tags
 
 # Dependencies from microsoft/terraform-test Docker image
-Gemfile
-Rakefile
 build/
+
+# IDE configs
+.idea
+
+# Ruby download package lock file.
+Gemfile.lock
+
+# Test Kitchen files.
+.kitchen
+
+# Mac folder attribute file
+.DS_Store
