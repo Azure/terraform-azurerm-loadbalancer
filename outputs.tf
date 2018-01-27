@@ -8,11 +8,6 @@ output "azurerm_resource_group_name" {
   value       = "${azurerm_resource_group.azlb.name}"
 }
 
-output "number_of_nodes" {
-  description = "the number of load balancer nodes provisioned"
-  value       = "${var.number_of_endpoints}"
-}
-
 output "azurerm_lb_id" {
   description = "the id for the azurerm_lb resource"
   value       = "${azurerm_lb.azlb.id}"

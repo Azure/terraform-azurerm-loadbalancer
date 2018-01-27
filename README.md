@@ -15,6 +15,10 @@ Usage
 Public loadbalancer example:
 
 ```hcl
+variable "resource_group_name" {
+  default = "my-terraform-lb"
+}
+
 variable "location" {
   default = "eastus"
 }
