@@ -11,12 +11,14 @@ resource "azurerm_public_ip" "azlb" {
   location                     = "${var.location}"
   resource_group_name          = "${azurerm_resource_group.azlb.name}"
   public_ip_address_allocation = "${var.public_ip_address_allocation}"
+  tags                         = "${var.tags}"
 }
 
 resource "azurerm_lb" "azlb" {
   name                = "${var.prefix}-lb"
   resource_group_name = "${azurerm_resource_group.azlb.name}"
   location            = "${var.location}"
+  tags                = "${var.tags}"
 
   frontend_ip_configuration {
     name                          = "${var.frontend_name}"
