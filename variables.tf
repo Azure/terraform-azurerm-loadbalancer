@@ -12,11 +12,6 @@ variable "prefix" {
   default     = "azure_lb"
 }
 
-variable "number_of_endpoints" {
-  description = "Number of inbound remote access rules to create which are load balanced on the vnet"
-  default     = 2
-}
-
 variable "remote_port" {
   description = "Protocols to be used for remote vm access. [protocol, backend_port].  Frontend port will be automatically generated starting at 50000 and in the output."
   default     = {}

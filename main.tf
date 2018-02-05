@@ -44,7 +44,6 @@ resource "azurerm_lb_nat_rule" "azlb" {
   frontend_port                  = "5000${count.index + 1}"
   backend_port                   = "${element(var.remote_port["${element(keys(var.remote_port), count.index)}"], 1)}"
   frontend_ip_configuration_name = "${var.frontend_name}"
-  count                          = "${var.number_of_endpoints}"
 }
 
 resource "azurerm_lb_probe" "azlb" {
