@@ -55,6 +55,7 @@ resource "azurerm_lb_probe" "azlb" {
   port                = "${element(var.lb_port["${element(keys(var.lb_port), count.index)}"], 2)}"
   interval_in_seconds = "${var.lb_probe_interval}"
   number_of_probes    = "${var.lb_probe_unhealthy_threshold}"
+  request_path        = "${element(var.lb_port["${element(keys(var.lb_port), count.index)}"], 1) == lower("http") ? element(var.lb_port["${element(keys(var.lb_port), count.index)}"], 3) : ""}"
 }
 
 resource "azurerm_lb_rule" "azlb" {
