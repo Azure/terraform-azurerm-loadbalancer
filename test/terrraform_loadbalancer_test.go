@@ -7,7 +7,7 @@ import (
 	"github.com/gruntwork-io/terratest/modules/test-structure"
 )
 
-func TestTerraformNetwork(t *testing.T) {
+func TestTerraformLoadbalancer(t *testing.T) {
 	t.Parallel()
 
 	fixtureFolder := "./fixture"
