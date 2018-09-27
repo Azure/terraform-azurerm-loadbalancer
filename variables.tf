@@ -18,7 +18,7 @@ variable "remote_port" {
 }
 
 variable "lb_port" {
-  description = "Protocols to be used for lb health probes and rules. [frontend_port, protocol, backend_port]"
+  description = "Protocols to be used for lb health probes and rules. [frontend_port, protocol_prob, backend_port,request_past, protocol_rule TCP/UDP]"
   default     = {}
 }
 
