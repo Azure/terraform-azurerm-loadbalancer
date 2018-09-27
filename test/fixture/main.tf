@@ -13,8 +13,8 @@ module "mylb" {
   }
 
   "lb_port" {
-    http = ["80", "Tcp", "80"]
-    http-2 = ["80", "Https", "443","/","TCP"]
+    http   = ["80", "Tcp", "80"]
+    http-2 = ["80", "Https", "443", "/", "TCP"]
   }
 }
 
