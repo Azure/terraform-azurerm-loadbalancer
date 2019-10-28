@@ -6,12 +6,12 @@ resource "azurerm_resource_group" "azlb" {
 }
 
 resource "azurerm_public_ip" "azlb" {
-  count                        = "${var.type == "public" ? 1 : 0}"
-  name                         = "${var.prefix}-publicIP"
-  location                     = "${var.location}"
-  resource_group_name          = "${azurerm_resource_group.azlb.name}"
-  public_ip_address_allocation = "${var.public_ip_address_allocation}"
-  tags                         = "${var.tags}"
+  count               = "${var.type == "public" ? 1 : 0}"
+  name                = "${var.prefix}-publicIP"
+  location            = "${var.location}"
+  resource_group_name = "${azurerm_resource_group.azlb.name}"
+  allocation_method   = "${var.public_ip_address_allocation}"
+  tags                = "${var.tags}"
 }
 
 resource "azurerm_lb" "azlb" {
