@@ -16,9 +16,3 @@ module "mylb" {
     http = ["80", "Tcp", "80"]
   }
 }
-
-module "network" {
-  source              = "Azure/network/azurerm"
-  location            = "${var.location}"
-  resource_group_name = "${random_id.rg_name.hex}"
-}
