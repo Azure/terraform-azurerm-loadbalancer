@@ -8,8 +8,8 @@ resource "azurerm_resource_group" "azlb" {
 resource "azurerm_public_ip" "azlb" {
   count               = var.type == "public" ? 1 : 0
   name                = "${var.prefix}-publicIP"
-  location            = var.location
   resource_group_name = azurerm_resource_group.azlb.name
+  location            = azurerm_resource_group.azlb.location
   allocation_method   = var.allocation_method
   tags                = var.tags
 }
@@ -17,7 +17,7 @@ resource "azurerm_public_ip" "azlb" {
 resource "azurerm_lb" "azlb" {
   name                = "${var.prefix}-lb"
   resource_group_name = azurerm_resource_group.azlb.name
-  location            = var.location
+  location            = azurerm_resource_group.azlb.location
   tags                = var.tags
 
   frontend_ip_configuration {
@@ -30,16 +30,16 @@ resource "azurerm_lb" "azlb" {
 }
 
 resource "azurerm_lb_backend_address_pool" "azlb" {
+  name                = "BackEndAddressPool"
   resource_group_name = azurerm_resource_group.azlb.name
   loadbalancer_id     = azurerm_lb.azlb.id
-  name                = "BackEndAddressPool"
 }
 
 resource "azurerm_lb_nat_rule" "azlb" {
   count                          = length(var.remote_port)
+  name                           = "VM-${count.index}"
   resource_group_name            = azurerm_resource_group.azlb.name
   loadbalancer_id                = azurerm_lb.azlb.id
-  name                           = "VM-${count.index}"
   protocol                       = "tcp"
   frontend_port                  = "5000${count.index + 1}"
   backend_port                   = element(var.remote_port[element(keys(var.remote_port), count.index)], 1)
@@ -48,9 +48,9 @@ resource "azurerm_lb_nat_rule" "azlb" {
 
 resource "azurerm_lb_probe" "azlb" {
   count               = length(var.lb_port)
+  name                = element(keys(var.lb_port), count.index)
   resource_group_name = azurerm_resource_group.azlb.name
   loadbalancer_id     = azurerm_lb.azlb.id
-  name                = element(keys(var.lb_port), count.index)
   protocol            = element(var.lb_port[element(keys(var.lb_port), count.index)], 1)
   port                = element(var.lb_port[element(keys(var.lb_port), count.index)], 2)
   interval_in_seconds = var.lb_probe_interval
@@ -59,9 +59,9 @@ resource "azurerm_lb_probe" "azlb" {
 
 resource "azurerm_lb_rule" "azlb" {
   count                          = length(var.lb_port)
+  name                           = element(keys(var.lb_port), count.index)
   resource_group_name            = azurerm_resource_group.azlb.name
   loadbalancer_id                = azurerm_lb.azlb.id
-  name                           = element(keys(var.lb_port), count.index)
   protocol                       = element(var.lb_port[element(keys(var.lb_port), count.index)], 1)
   frontend_port                  = element(var.lb_port[element(keys(var.lb_port), count.index)], 0)
   backend_port                   = element(var.lb_port[element(keys(var.lb_port), count.index)], 2)
