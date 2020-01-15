@@ -6,12 +6,12 @@ resource "azurerm_resource_group" "azlb" {
 }
 
 resource "azurerm_public_ip" "azlb" {
-  count                        = var.type == "public" ? 1 : 0
-  name                         = "${var.prefix}-publicIP"
-  location                     = var.location
-  resource_group_name          = azurerm_resource_group.azlb.name
-  allocation_method            = var.allocation_method
-  tags                         = var.tags
+  count               = var.type == "public" ? 1 : 0
+  name                = "${var.prefix}-publicIP"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.azlb.name
+  allocation_method   = var.allocation_method
+  tags                = var.tags
 }
 
 resource "azurerm_lb" "azlb" {
@@ -22,7 +22,7 @@ resource "azurerm_lb" "azlb" {
 
   frontend_ip_configuration {
     name                          = var.frontend_name
-    public_ip_address_id          = var.type == "public" ? join("",azurerm_public_ip.azlb.*.id) : ""
+    public_ip_address_id          = var.type == "public" ? join("", azurerm_public_ip.azlb.*.id) : ""
     subnet_id                     = var.frontend_subnet_id
     private_ip_address            = var.frontend_private_ip_address
     private_ip_address_allocation = var.frontend_private_ip_address_allocation
@@ -69,6 +69,6 @@ resource "azurerm_lb_rule" "azlb" {
   enable_floating_ip             = false
   backend_address_pool_id        = azurerm_lb_backend_address_pool.azlb.id
   idle_timeout_in_minutes        = 5
-  probe_id                       = element(azurerm_lb_probe.azlb.*.id,count.index)
+  probe_id                       = element(azurerm_lb_probe.azlb.*.id, count.index)
   depends_on                     = ["azurerm_lb_probe.azlb"]
 }

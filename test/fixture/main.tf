@@ -8,11 +8,11 @@ module "mylb" {
   location            = "${var.location}"
   prefix              = "${random_id.rg_name.hex}"
 
-  "remote_port" {
+  remote_port ={
     ssh = ["Tcp", "22"]
-  }
+  }]
 
-  "lb_port" {
+  lb_port ={
     http = ["80", "Tcp", "80"]
   }
 }
