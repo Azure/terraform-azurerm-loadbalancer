@@ -10,7 +10,7 @@ module "mylb" {
 
   remote_port ={
     ssh = ["Tcp", "22"]
-  }]
+  }
 
   lb_port ={
     http = ["80", "Tcp", "80"]
