@@ -68,7 +68,7 @@ module "mylb" {
   lb_port = {
     http   = ["80", "Tcp", "80"]
     https  = ["443", "Tcp", "443"]
-    http-2 = ["80", "Tcp", "443", "/", "Https"]
+    https2 = ["1443", "Tcp", "1443", "/", "Https"]
   }
 
   tags = {
