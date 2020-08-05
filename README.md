@@ -80,8 +80,6 @@ module "mylb" {
     http2 = ["Http", "1443", "/"]
   }
 
-
-
   tags = {
     cost-center = "12345"
     source      = "terraform"
