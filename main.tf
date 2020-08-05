@@ -46,15 +46,15 @@ resource "azurerm_lb_nat_rule" "azlb" {
 }
 
 resource "azurerm_lb_probe" "azlb" {
-  count               = length(var.lb_port)
-  name                = element(keys(var.lb_port), count.index)
+  count               = length(var.lb_probe)
+  name                = element(keys(var.lb_probe), count.index)
   resource_group_name = data.azurerm_resource_group.azlb.name
   loadbalancer_id     = azurerm_lb.azlb.id
-  protocol            = element(var.lb_port[element(keys(var.lb_port), count.index)], 1)
-  port                = element(var.lb_port[element(keys(var.lb_port), count.index)], 2)
+  protocol            = element(var.lb_probe[element(keys(var.lb_probe), count.index)], 0)
+  port                = element(var.lb_probe[element(keys(var.lb_probe), count.index)], 1)
   interval_in_seconds = var.lb_probe_interval
   number_of_probes    = var.lb_probe_unhealthy_threshold
-  request_path        = lower(element(var.lb_port[element(keys(var.lb_port), count.index)], 3)) == "http" || lower(element(var.lb_port[element(keys(var.lb_port), count.index)], 3)) == "https" ? element(var.lb_port[element(keys(var.lb_port), count.index)], 4) : ""
+  request_path        = element(var.lb_probe[element(keys(var.lb_probe), count.index)], 2)
 }
 
 resource "azurerm_lb_rule" "azlb" {

@@ -36,6 +36,11 @@ module "mylb" {
   lb_port = {
     http = ["80", "Tcp", "80"]
   }
+
+  lb_probe = {
+    http = ["Tcp", "80", ""]
+  }
+
 }
 
 ```
@@ -66,10 +71,16 @@ module "mylb" {
   }
 
   lb_port = {
-    http   = ["80", "Tcp", "80"]
-    https  = ["443", "Tcp", "443"]
-    https2 = ["1443", "Tcp", "1443", "/", "Https"]
+    http  = ["80", "Tcp", "80"]
+    https = ["443", "Tcp", "443"]
   }
+
+  lb_probe = {
+    http  = ["Tcp", "80", ""]
+    http2 = ["Http", "1443", "/"]
+  }
+
+
 
   tags = {
     cost-center = "12345"
