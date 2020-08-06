@@ -1,10 +1,10 @@
 variable "location" {
-  description = "(Required) The location/region where the core network will be created. The full list of Azure regions can be found at https://azure.microsoft.com/regions"
+  description = "(Optional) The location/region where the core network will be created. The full list of Azure regions can be found at https://azure.microsoft.com/regions"
+  default     = ""
 }
 
 variable "resource_group_name" {
-  description = "(Required) The name of the resource group where the load balancer resources will be placed."
-  default     = "azure_lb-rg"
+  description = "(Required) The name of the resource group where the load balancer resources will be imported."
 }
 
 variable "prefix" {
@@ -18,7 +18,8 @@ variable "remote_port" {
 }
 
 variable "lb_port" {
-  description = "Protocols to be used for lb health probes and rules. [frontend_port, protocol, backend_port]"
+  description = "Protocols to be used for lb rules. Format as [frontend_port, protocol, backend_port]"
+  type        = map(any)
   default     = {}
 }
 
@@ -69,4 +70,15 @@ variable "frontend_private_ip_address" {
 variable "frontend_private_ip_address_allocation" {
   description = "(Optional) Frontend ip allocation type (Static or Dynamic)"
   default     = "Dynamic"
+}
+
+variable "lb_sku" {
+  description = "(Optional) The SKU of the Azure Load Balancer. Accepted values are Basic and Standard."
+  default     = "Basic"
+}
+
+variable "lb_probe" {
+  description = "(Optional) Protocols to be used for lb health probes. Format as [protocol, port, request_path]"
+  type        = map(any)
+  default     = {}
 }

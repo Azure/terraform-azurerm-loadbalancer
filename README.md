@@ -15,57 +15,72 @@ characteristics:
 Public loadbalancer example:
 
 ```hcl
-variable "resource_group_name" {
-  default = "my-terraform-lb"
+provider "azurerm" {
+  features {}
 }
 
-variable "location" {
-  default = "eastus"
+resource "azurerm_resource_group" "example" {
+  name     = "example-lb"
+  location = "West Europe"
 }
 
 module "mylb" {
   source              = "Azure/loadbalancer/azurerm"
-  resource_group_name = "${var.resource_group_name}"
-  location            = "${var.location}"
+  resource_group_name = azurerm_resource_group.example.name
   prefix              = "terraform-test"
 
-  "remote_port" {
+  remote_port = {
     ssh = ["Tcp", "22"]
   }
 
-  "lb_port" {
+  lb_port = {
     http = ["80", "Tcp", "80"]
   }
+
+  lb_probe = {
+    http = ["Tcp", "80", ""]
+  }
+
 }
 
-module "network" {
-  source              = "Azure/network/azurerm"
-  location            = "${var.location}"
-  resource_group_name = "${var.resource_group_name}"
-}
 ```
 
 Private loadbalancer example:
 
 ```hcl
+provider "azurerm" {
+  features {}
+}
+
+resource "azurerm_resource_group" "example" {
+  name     = "example-lb"
+  location = "West Europe"
+}
+
 module "mylb" {
   source                                 = "Azure/loadbalancer/azurerm"
-  location                               = "westus"
+  resource_group_name                    = azurerm_resource_group.example.name
   type                                   = "private"
-  frontend_subnet_id                     = "${module.network.vnet_subnets[0]}"
+  frontend_subnet_id                     = module.network.vnet_subnets[0]
   frontend_private_ip_address_allocation = "Static"
   frontend_private_ip_address            = "10.0.1.6"
+  lb_sku                                 = "Standard"
 
-  "remote_port" {
+  remote_port = {
     ssh = ["Tcp", "22"]
   }
 
-  "lb_port" {
+  lb_port = {
     http  = ["80", "Tcp", "80"]
     https = ["443", "Tcp", "443"]
   }
 
-  "tags" {
+  lb_probe = {
+    http  = ["Tcp", "80", ""]
+    http2 = ["Http", "1443", "/"]
+  }
+
+  tags = {
     cost-center = "12345"
     source      = "terraform"
   }
@@ -73,8 +88,7 @@ module "mylb" {
 
 module "network" {
   source              = "Azure/network/azurerm"
-  resource_group_name = "myapp"
-  location            = "westus"
+  resource_group_name = azurerm_resource_group.example.name
   address_space       = "10.0.0.0/16"
   subnet_prefixes     = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
   subnet_names        = ["subnet1", "subnet2", "subnet3"]
