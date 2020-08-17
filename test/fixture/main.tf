@@ -38,6 +38,8 @@ module "mylb" {
     cost-center = "12345"
     source      = "terraform"
   }
+
+  depends_on = [azurerm_resource_group.test]
 }
 
 module "network" {
