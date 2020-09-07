@@ -10,7 +10,43 @@ characteristics:
 - For `private` loadbalancer, specify the private ip address using`frontend_private_ip_address`
 - Specify the type of the private ip address with `frontend_private_ip_address_allocation`, Dynamic or Static , default is `Dynamic`
 
-## Usage
+## Usage in Terraform 0.13
+
+Public loadbalancer example:
+
+```hcl
+provider "azurerm" {
+  features {}
+}
+
+resource "azurerm_resource_group" "example" {
+  name     = "example-lb"
+  location = "West Europe"
+}
+
+module "mylb" {
+  source              = "Azure/loadbalancer/azurerm"
+  resource_group_name = azurerm_resource_group.example.name
+  prefix              = "terraform-test"
+
+  remote_port = {
+    ssh = ["Tcp", "22"]
+  }
+
+  lb_port = {
+    http = ["80", "Tcp", "80"]
+  }
+
+  lb_probe = {
+    http = ["Tcp", "80", ""]
+  }
+
+  depends_on = [azurerm_resource_group.example]
+}
+
+```
+
+## Usage in Terraform 0.12
 
 Public loadbalancer example:
 
