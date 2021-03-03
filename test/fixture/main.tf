@@ -19,6 +19,7 @@ module "mylb" {
   frontend_private_ip_address_allocation = "Static"
   frontend_private_ip_address            = "10.0.1.6"
   lb_sku                                 = "Standard"
+  pip_sku                                = "Standard"
 
   remote_port = {
     ssh = ["Tcp", "22"]

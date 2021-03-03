@@ -94,3 +94,9 @@ variable "lb_probe" {
   type        = map(any)
   default     = {}
 }
+
+variable "pip_sku" {
+  description = "(Optional) The SKU of the Azure Public IP. Accepted values are Basic and Standard."
+  type        = string
+  default     = "Basic"
+}
