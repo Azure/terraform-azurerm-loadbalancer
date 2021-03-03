@@ -9,6 +9,7 @@ resource "azurerm_public_ip" "azlb" {
   resource_group_name = data.azurerm_resource_group.azlb.name
   location            = coalesce(var.location, data.azurerm_resource_group.azlb.location)
   allocation_method   = var.allocation_method
+  sku                 = var.pip_sku
   tags                = var.tags
 }
 
