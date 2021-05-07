@@ -3,9 +3,14 @@ data "azurerm_resource_group" "azlb" {
   name = var.resource_group_name
 }
 
+locals {
+  lb_name  = var.name != "" ? var.name : format("%s-lb", var.prefix)
+  pip_name = var.name != "" ? format("pip-%s", var.name) : format("%s-publicIP", var.prefix)
+}
+
 resource "azurerm_public_ip" "azlb" {
   count               = var.type == "public" ? 1 : 0
-  name                = "${var.prefix}-publicIP"
+  name                = local.pip_name
   resource_group_name = data.azurerm_resource_group.azlb.name
   location            = coalesce(var.location, data.azurerm_resource_group.azlb.location)
   allocation_method   = var.allocation_method
@@ -14,7 +19,7 @@ resource "azurerm_public_ip" "azlb" {
 }
 
 resource "azurerm_lb" "azlb" {
-  name                = "${var.prefix}-lb"
+  name                = local.lb_name
   resource_group_name = data.azurerm_resource_group.azlb.name
   location            = coalesce(var.location, data.azurerm_resource_group.azlb.location)
   sku                 = var.lb_sku
@@ -30,9 +35,8 @@ resource "azurerm_lb" "azlb" {
 }
 
 resource "azurerm_lb_backend_address_pool" "azlb" {
-  name                = "BackEndAddressPool"
-  resource_group_name = data.azurerm_resource_group.azlb.name
-  loadbalancer_id     = azurerm_lb.azlb.id
+  name            = "BackEndAddressPool"
+  loadbalancer_id = azurerm_lb.azlb.id
 }
 
 resource "azurerm_lb_nat_rule" "azlb" {

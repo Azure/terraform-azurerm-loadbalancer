@@ -100,3 +100,9 @@ variable "pip_sku" {
   type        = string
   default     = "Basic"
 }
+
+variable "name" {
+  description = "(Optional) Name of the load balancer. If it is set, the 'prefix' variable will be ignored."
+  type        = string
+  default     = ""
+}
