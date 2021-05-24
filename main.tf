@@ -31,7 +31,6 @@ resource "azurerm_lb" "azlb" {
 
 resource "azurerm_lb_backend_address_pool" "azlb" {
   name                = "BackEndAddressPool"
-  resource_group_name = data.azurerm_resource_group.azlb.name
   loadbalancer_id     = azurerm_lb.azlb.id
 }
 
