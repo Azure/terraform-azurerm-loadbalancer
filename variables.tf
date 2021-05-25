@@ -106,3 +106,9 @@ variable "name" {
   type        = string
   default     = ""
 }
+
+variable "pip_name" {
+  description = "(Optional) Name of public ip. If it is set, the 'prefix' variable will be ignored."
+  type        = string
+  default     = ""
+}
