@@ -21,7 +21,7 @@ module "mylb" {
   lb_sku                                 = "Standard"
   pip_sku                                = "Standard"
   name                                   = "lb-aztest"
-  pip_name                               = "pip-aztest
+  pip_name                               = "pip-aztest"
 
   remote_port = {
     ssh = ["Tcp", "22"]
