@@ -27,7 +27,8 @@ resource "azurerm_resource_group" "example" {
 module "mylb" {
   source              = "Azure/loadbalancer/azurerm"
   resource_group_name = azurerm_resource_group.example.name
-  prefix              = "terraform-test"
+  name                = "lb-terraform-test"
+  pip_name            = "pip-terraform-test"
 
   remote_port = {
     ssh = ["Tcp", "22"]

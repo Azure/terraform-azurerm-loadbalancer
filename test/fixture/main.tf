@@ -20,6 +20,8 @@ module "mylb" {
   frontend_private_ip_address            = "10.0.1.6"
   lb_sku                                 = "Standard"
   pip_sku                                = "Standard"
+  name                                   = "lb-aztest"
+  pip_name                               = "pip-aztest"
 
   remote_port = {
     ssh = ["Tcp", "22"]
