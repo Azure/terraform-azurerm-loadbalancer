@@ -112,3 +112,15 @@ variable "pip_name" {
   type        = string
   default     = ""
 }
+
+variable "frontend_vnet_name" {
+  description = "(Optional) Frontend virtual network name to use when in private mode. Ignored if frontend_subnet_id is set."
+  type        = string
+  default     = ""
+}
+
+variable "frontend_subnet_name" {
+  description = "(Optional) Frontend subnet name to use when in private mode. Ignored if frontend_subnet_id is set."
+  type        = string
+  default     = ""
+}

@@ -12,10 +12,12 @@ resource "azurerm_resource_group" "test" {
 }
 
 module "mylb" {
-  source                                 = "../.."
-  resource_group_name                    = azurerm_resource_group.test.name
-  type                                   = "private"
-  frontend_subnet_id                     = module.network.vnet_subnets[0]
+  source              = "../.."
+  resource_group_name = azurerm_resource_group.test.name
+  type                = "private"
+  #frontend_subnet_id                     = module.network.vnet_subnets[0]
+  frontend_vnet_name                     = "acctvnet"
+  frontend_subnet_name                   = "subnet1"
   frontend_private_ip_address_allocation = "Static"
   frontend_private_ip_address            = "10.0.1.6"
   lb_sku                                 = "Standard"
@@ -42,7 +44,7 @@ module "mylb" {
     source      = "terraform"
   }
 
-  depends_on = [azurerm_resource_group.test]
+  depends_on = [module.network]
 }
 
 module "network" {
@@ -50,6 +52,7 @@ module "network" {
   resource_group_name = azurerm_resource_group.test.name
   address_space       = "10.0.0.0/16"
   subnet_prefixes     = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+  vnet_name           = "acctvnet"
   subnet_names        = ["subnet1", "subnet2", "subnet3"]
 
   tags = {
