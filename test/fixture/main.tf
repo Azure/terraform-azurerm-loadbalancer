@@ -22,6 +22,7 @@ module "mylb" {
   pip_sku                                = "Standard"
   name                                   = "lb-aztest"
   pip_name                               = "pip-aztest"
+  disable_outbound_snat                  = true
 
   remote_port = {
     ssh = ["Tcp", "22"]

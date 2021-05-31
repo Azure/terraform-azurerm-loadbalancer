@@ -35,8 +35,8 @@ resource "azurerm_lb" "azlb" {
 }
 
 resource "azurerm_lb_backend_address_pool" "azlb" {
-  name                = "BackEndAddressPool"
-  loadbalancer_id     = azurerm_lb.azlb.id
+  name            = "BackEndAddressPool"
+  loadbalancer_id = azurerm_lb.azlb.id
 }
 
 resource "azurerm_lb_nat_rule" "azlb" {
@@ -75,4 +75,5 @@ resource "azurerm_lb_rule" "azlb" {
   backend_address_pool_id        = azurerm_lb_backend_address_pool.azlb.id
   idle_timeout_in_minutes        = 5
   probe_id                       = element(azurerm_lb_probe.azlb.*.id, count.index)
+  disable_outbound_snat          = var.disable_outbound_snat
 }

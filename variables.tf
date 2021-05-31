@@ -112,3 +112,9 @@ variable "pip_name" {
   type        = string
   default     = ""
 }
+
+variable "disable_outbound_snat" {
+  description = "(Optional) Is snat enabled for this Load Balancer Rule?."
+  type        = bool
+  default     = false
+}
