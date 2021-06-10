@@ -4,9 +4,19 @@ data "azurerm_resource_group" "azlb" {
 }
 
 locals {
-  lb_name  = var.name != "" ? var.name : format("%s-lb", var.prefix)
-  pip_name = var.pip_name != "" ? var.pip_name : format("%s-publicIP", var.prefix)
+  lb_name         = var.name != "" ? var.name : format("%s-lb", var.prefix)
+  pip_name        = var.pip_name != "" ? var.pip_name : format("%s-publicIP", var.prefix)
+  vnet_id_by_name = length(data.azurerm_subnet.snet) == 1 ? element(data.azurerm_subnet.snet.*.id, 0) : ""
 }
+
+data "azurerm_subnet" "snet" {
+  count = var.frontend_subnet_name != "" ? 1 : 0
+
+  name                 = var.frontend_subnet_name
+  virtual_network_name = var.frontend_vnet_name
+  resource_group_name  = data.azurerm_resource_group.azlb.name
+}
+
 
 resource "azurerm_public_ip" "azlb" {
   count               = var.type == "public" ? 1 : 0
@@ -28,15 +38,15 @@ resource "azurerm_lb" "azlb" {
   frontend_ip_configuration {
     name                          = var.frontend_name
     public_ip_address_id          = var.type == "public" ? join("", azurerm_public_ip.azlb.*.id) : ""
-    subnet_id                     = var.frontend_subnet_id
+    subnet_id                     = var.frontend_subnet_id != "" ? var.frontend_subnet_id : local.vnet_id_by_name
     private_ip_address            = var.frontend_private_ip_address
     private_ip_address_allocation = var.frontend_private_ip_address_allocation
   }
 }
 
 resource "azurerm_lb_backend_address_pool" "azlb" {
-  name                = "BackEndAddressPool"
-  loadbalancer_id     = azurerm_lb.azlb.id
+  name            = "BackEndAddressPool"
+  loadbalancer_id = azurerm_lb.azlb.id
 }
 
 resource "azurerm_lb_nat_rule" "azlb" {
