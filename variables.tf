@@ -112,3 +112,21 @@ variable "pip_name" {
   type        = string
   default     = ""
 }
+
+variable "pip_availability_zone" {
+  description = "(Optional) The availability zone to allocate the Public IP in."
+  type        = string
+  default     = ""
+}
+
+variable "pip_domain_name_label" {
+  description = "(Optional) Label for the Domain Name. Will be used to make up the FQDN. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system."
+  type        = string
+  default     = ""
+}
+
+variable "pip_reverse_fqdn" {
+  description = "(Optional) A fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN."
+  type        = string
+  default     = ""
+}
