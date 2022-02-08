@@ -72,7 +72,7 @@ resource "azurerm_lb_rule" "azlb" {
   backend_port                   = element(var.lb_port[element(keys(var.lb_port), count.index)], 2)
   frontend_ip_configuration_name = var.frontend_name
   enable_floating_ip             = false
-  backend_address_pool_id        = azurerm_lb_backend_address_pool.azlb.id
+  backend_address_pool_ids       = [ azurerm_lb_backend_address_pool.azlb.id ]
   idle_timeout_in_minutes        = 5
   probe_id                       = element(azurerm_lb_probe.azlb.*.id, count.index)
 }
