@@ -44,7 +44,7 @@ resource "azurerm_lb_nat_rule" "azlb" {
   name                           = "VM-${count.index}"
   resource_group_name            = data.azurerm_resource_group.azlb.name
   loadbalancer_id                = azurerm_lb.azlb.id
-  protocol                       = "tcp"
+  protocol                       = "Tcp"
   frontend_port                  = "5000${count.index + 1}"
   backend_port                   = element(var.remote_port[element(keys(var.remote_port), count.index)], 1)
   frontend_ip_configuration_name = var.frontend_name
