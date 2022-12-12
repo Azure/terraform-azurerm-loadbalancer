@@ -1,14 +1,10 @@
-provider "azurerm" {
-  features {}
-}
-
 resource "random_id" "rg_name" {
   byte_length = 8
 }
 
 resource "azurerm_resource_group" "test" {
+  location = var.location
   name     = "example-lb-${random_id.rg_name.hex}"
-  location = "West Europe"
 }
 
 module "mylb" {
@@ -19,6 +15,7 @@ module "mylb" {
   frontend_private_ip_address_allocation = "Static"
   frontend_private_ip_address            = "10.0.1.6"
   lb_sku                                 = "Standard"
+  location                               = var.location
   pip_sku                                = "Standard"
   name                                   = "lb-aztest"
   pip_name                               = "pip-aztest"
@@ -47,8 +44,10 @@ module "mylb" {
 
 module "network" {
   source              = "Azure/network/azurerm"
+  version             = "4.2.0"
   resource_group_name = azurerm_resource_group.test.name
   address_space       = "10.0.0.0/16"
+  location            = var.location
   subnet_prefixes     = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
   subnet_names        = ["subnet1", "subnet2", "subnet3"]
 

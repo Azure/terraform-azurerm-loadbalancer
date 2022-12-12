@@ -1,5 +1,7 @@
 # Variable files
 terraform.tfvars
+**/.terraform
+**/.terraform.lock.hcl
 
 ### https://raw.github.com/github/gitignore/abad92dac5a4306f72242dae3bca6e277bce3615/Terraform.gitignore
 
@@ -42,3 +44,9 @@ Gemfile.lock
 
 # Mac folder attribute file
 .DS_Store
+
+.tflint.hcl
+.tflint_example.hcl
+tfmod-scaffold
+README-generated.md
+scripts

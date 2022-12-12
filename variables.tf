@@ -52,8 +52,8 @@ variable "allocation_method" {
 }
 
 variable "tags" {
-  type = map(string)
-
+  type        = map(string)
+  description = "(Optional) A mapping of tags to assign to the resource."
   default = {
     source = "terraform"
   }
