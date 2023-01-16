@@ -3,26 +3,33 @@ data "azurerm_resource_group" "azlb" {
   name = var.resource_group_name
 }
 
-locals {
-  lb_name  = var.name != "" ? var.name : format("%s-lb", var.prefix)
-  pip_name = var.pip_name != "" ? var.pip_name : format("%s-publicIP", var.prefix)
-}
-
 resource "azurerm_public_ip" "azlb" {
   count = var.type == "public" ? 1 : 0
 
-  allocation_method   = var.allocation_method
-  location            = coalesce(var.location, data.azurerm_resource_group.azlb.location)
-  name                = local.pip_name
-  resource_group_name = data.azurerm_resource_group.azlb.name
-  sku                 = var.pip_sku
-  tags                = var.tags
+  allocation_method       = var.allocation_method
+  location                = coalesce(var.location, data.azurerm_resource_group.azlb.location)
+  name                    = local.pip_name
+  resource_group_name     = data.azurerm_resource_group.azlb.name
+  ddos_protection_mode    = var.pip_ddos_protection_mode
+  ddos_protection_plan_id = var.pip_ddos_protection_plan_id
+  domain_name_label       = var.pip_domain_name_label
+  edge_zone               = var.edge_zone
+  idle_timeout_in_minutes = var.pip_idle_timeout_in_minutes
+  ip_tags                 = var.pip_ip_tags
+  ip_version              = var.pip_ip_version
+  public_ip_prefix_id     = var.pip_public_ip_prefix_id
+  reverse_fqdn            = var.pip_reverse_fqdn
+  sku                     = var.pip_sku
+  sku_tier                = var.pip_sku_tier
+  tags                    = var.tags
+  zones                   = var.pip_zones
 }
 
 resource "azurerm_lb" "azlb" {
   location            = coalesce(var.location, data.azurerm_resource_group.azlb.location)
   name                = local.lb_name
   resource_group_name = data.azurerm_resource_group.azlb.name
+  edge_zone           = var.edge_zone
   sku                 = var.lb_sku
   tags                = var.tags
 
