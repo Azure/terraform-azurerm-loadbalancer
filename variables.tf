@@ -9,6 +9,12 @@ variable "allocation_method" {
   default     = "Static"
 }
 
+variable "edge_zone" {
+  type        = string
+  description = "(Optional) Specifies the Edge Zone within the Azure Region where this Public IP and Load Balancer should exist. Changing this forces new resources to be created."
+  default     = null
+}
+
 variable "frontend_name" {
   description = "(Required) Specifies the name of the frontend ip configuration."
   type        = string
@@ -75,12 +81,6 @@ variable "name" {
   default     = ""
 }
 
-variable "pip_zones" {
-  type        = list(string)
-  description = "(Optional) A collection containing the availability zone to allocate the Public IP in. Changing this forces a new resource to be created. Availability Zones are only supported with a [Standard SKU](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#standard) and [in select regions](https://docs.microsoft.com/azure/availability-zones/az-overview) at this time. Standard SKU Public IP Addresses that do not specify a zone are **not** zone-redundant by default."
-  default     = null
-}
-
 variable "pip_ddos_protection_mode" {
   type        = string
   description = "(Optional) The DDoS protection mode of the public IP. Possible values are `Disabled`, `Enabled`, and `VirtualNetworkInherited`. Defaults to `VirtualNetworkInherited`."
@@ -96,12 +96,6 @@ variable "pip_ddos_protection_plan_id" {
 variable "pip_domain_name_label" {
   type        = string
   description = "(Optional) Label for the Domain Name. Will be used to make up the FQDN.  If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system."
-  default     = null
-}
-
-variable "edge_zone" {
-  type        = string
-  description = "(Optional) Specifies the Edge Zone within the Azure Region where this Public IP and Load Balancer should exist. Changing this forces new resources to be created."
   default     = null
 }
 
@@ -123,6 +117,12 @@ variable "pip_ip_version" {
   default     = "IPv4"
 }
 
+variable "pip_name" {
+  description = "(Optional) Name of public ip. If it is set, the 'prefix' variable will be ignored."
+  type        = string
+  default     = ""
+}
+
 variable "pip_public_ip_prefix_id" {
   type        = string
   description = "(Optional) If specified then public IP address allocated will be provided from the public IP prefix resource. Changing this forces a new resource to be created."
@@ -135,22 +135,22 @@ variable "pip_reverse_fqdn" {
   default     = null
 }
 
+variable "pip_sku" {
+  description = "(Optional) The SKU of the Azure Public IP. Accepted values are Basic and Standard."
+  type        = string
+  default     = "Basic"
+}
+
 variable "pip_sku_tier" {
   type        = string
   description = "(Optional) The SKU Tier that should be used for the Public IP. Possible values are `Regional` and `Global`. Defaults to `Regional`. Changing this forces a new resource to be created."
   default     = "Regional"
 }
 
-variable "pip_name" {
-  description = "(Optional) Name of public ip. If it is set, the 'prefix' variable will be ignored."
-  type        = string
-  default     = ""
-}
-
-variable "pip_sku" {
-  description = "(Optional) The SKU of the Azure Public IP. Accepted values are Basic and Standard."
-  type        = string
-  default     = "Basic"
+variable "pip_zones" {
+  type        = list(string)
+  description = "(Optional) A collection containing the availability zone to allocate the Public IP in. Changing this forces a new resource to be created. Availability Zones are only supported with a [Standard SKU](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#standard) and [in select regions](https://docs.microsoft.com/azure/availability-zones/az-overview) at this time. Standard SKU Public IP Addresses that do not specify a zone are **not** zone-redundant by default."
+  default     = null
 }
 
 variable "prefix" {
