@@ -5,6 +5,7 @@
 **Merged pull requests:**
 
 - Reorder arguments, variables, outputs, locals to meet the codex requirement. [\#55](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/55) ([lonegunmanb](https://github.com/lonegunmanb))
+- Rewrite pull request \#41 so we can customize arguments for public ip. [\#54](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/54) ([lonegunmanb](https://github.com/lonegunmanb))
 - Bump github.com/Azure/terraform-module-test-helper from 0.3.0 to 0.6.0 in /test [\#51](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/51) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump github.com/gruntwork-io/terratest from 0.41.6 to 0.41.7 in /test [\#50](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/50) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Prepare for CI [\#49](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/49) ([lonegunmanb](https://github.com/lonegunmanb))
