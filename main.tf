@@ -37,7 +37,7 @@ resource "azurerm_lb" "azlb" {
     name                          = var.frontend_name
     private_ip_address            = var.frontend_private_ip_address
     private_ip_address_allocation = var.frontend_private_ip_address_allocation
-    public_ip_address_id          = var.type == "public" ? join("", azurerm_public_ip.azlb.*.id) : ""
+    public_ip_address_id          = try(azurerm_public_ip.azlb[0].id, "")
     subnet_id                     = var.frontend_subnet_id
   }
 }
@@ -83,5 +83,5 @@ resource "azurerm_lb_rule" "azlb" {
   backend_address_pool_ids       = [azurerm_lb_backend_address_pool.azlb.id]
   enable_floating_ip             = false
   idle_timeout_in_minutes        = 5
-  probe_id                       = element(azurerm_lb_probe.azlb.*.id, count.index)
+  probe_id                       = element(azurerm_lb_probe.azlb[*].id, count.index)
 }

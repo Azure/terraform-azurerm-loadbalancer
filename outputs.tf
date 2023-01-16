@@ -15,22 +15,22 @@ output "azurerm_lb_id" {
 
 output "azurerm_lb_nat_rule_ids" {
   description = "the ids for the azurerm_lb_nat_rule resources"
-  value       = azurerm_lb_nat_rule.azlb.*.id
+  value       = azurerm_lb_nat_rule.azlb[*].id
 }
 
 output "azurerm_lb_probe_ids" {
   description = "the ids for the azurerm_lb_probe resources"
-  value       = azurerm_lb_probe.azlb.*.id
+  value       = azurerm_lb_probe.azlb[*].id
 }
 
 output "azurerm_public_ip_address" {
   description = "the ip address for the azurerm_lb_public_ip resource"
-  value       = azurerm_public_ip.azlb.*.ip_address
+  value       = azurerm_public_ip.azlb[*].ip_address
 }
 
 output "azurerm_public_ip_id" {
   description = "the id for the azurerm_lb_public_ip resource"
-  value       = azurerm_public_ip.azlb.*.id
+  value       = azurerm_public_ip.azlb[*].id
 }
 
 output "azurerm_resource_group_name" {
