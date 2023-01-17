@@ -9,6 +9,12 @@ variable "allocation_method" {
   default     = "Static"
 }
 
+variable "disable_outbound_snat" {
+  description = "(Optional) Is snat enabled for this Load Balancer Rule? Default `false`."
+  type        = bool
+  default     = false
+}
+
 variable "edge_zone" {
   type        = string
   description = "(Optional) Specifies the Edge Zone within the Azure Region where this Public IP and Load Balancer should exist. Changing this forces new resources to be created."
