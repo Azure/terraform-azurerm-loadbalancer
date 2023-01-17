@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased](https://github.com/Azure/terraform-azurerm-loadbalancer/tree/HEAD)
+## [4.0.0](https://github.com/Azure/terraform-azurerm-loadbalancer/tree/4.0.0) (2023-01-17)
 
 **Merged pull requests:**
 
