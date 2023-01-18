@@ -39,6 +39,18 @@ variable "frontend_subnet_id" {
   default     = ""
 }
 
+variable "frontend_subnet_name" {
+  description = "(Optional) Frontend virtual network name to use when in private mode. Ignored if `frontend_subnet_id` is set."
+  type        = string
+  default     = ""
+}
+
+variable "frontend_vnet_name" {
+  description = "(Optional) Frontend virtual network name to use when in private mode. Igored if `frontend_subnet_id` is set."
+  type        = string
+  default     = ""
+}
+
 variable "lb_port" {
   description = "Protocols to be used for lb rules. Format as [frontend_port, protocol, backend_port]"
   type        = map(any)
