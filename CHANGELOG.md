@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased](https://github.com/Azure/terraform-azurerm-loadbalancer/tree/HEAD)
+
+**Merged pull requests:**
+
+- Add version upgrade test [\#60](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/60) ([lonegunmanb](https://github.com/lonegunmanb))
+
 ## [4.0.0](https://github.com/Azure/terraform-azurerm-loadbalancer/tree/4.0.0) (2023-01-17)
 
 **Merged pull requests:**
