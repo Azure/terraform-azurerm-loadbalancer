@@ -46,7 +46,14 @@ resource "azurerm_lb" "azlb" {
     private_ip_address            = var.frontend_private_ip_address
     private_ip_address_allocation = var.frontend_private_ip_address_allocation
     public_ip_address_id          = try(azurerm_public_ip.azlb[0].id, "")
-    subnet_id                     = var.frontend_subnet_id != "" ? var.frontend_subnet_id : local.vnet_id_by_name
+    subnet_id                     = coalesce(var.frontend_subnet_id, try(data.azurerm_subnet.snet[0].id, ""))
+  }
+
+  lifecycle {
+    precondition {
+      condition     = !((var.frontend_subnet_name != "" || var.frontend_vnet_name != "") && var.frontend_subnet_id != "")
+      error_message = "frontend_subnet_name or frontend_vent_name cannot exist if frontend_subnet_id exists."
+    }
   }
 }
 

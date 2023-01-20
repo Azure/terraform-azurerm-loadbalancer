@@ -9,8 +9,8 @@ import (
 
 func TestExmaples(t *testing.T) {
 	testPaths := []string{
-		//"examples/startup",
-		"examples/setsubnetbyname",
+		"examples/startup",
+		"examples/set_subnet_by_name",
 	}
 
 	for _, v := range testPaths {
