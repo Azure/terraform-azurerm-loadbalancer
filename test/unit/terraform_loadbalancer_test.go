@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func Test_FrontendSubnetIdNotExist(t *testing.T) {
+func Test_SubnetIdByNameNotExist(t *testing.T) {
 	vars := map[string]interface{}{
 		"frontend_subnet_id": "exampleSubnetId",
 	}

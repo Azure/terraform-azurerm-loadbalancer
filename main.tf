@@ -55,7 +55,7 @@ resource "azurerm_lb" "azlb" {
 
   lifecycle {
     precondition {
-      condition     = var.frontend_subnet_name != "" || var.frontend_subnet_id != ""
+      condition     = try(coalesce(var.frontend_subnet_name, var.frontend_subnet_id), "") != ""
       error_message = "frontend_subnet_name or frontend_vent_name cannot exist if frontend_subnet_id exists."
     }
   }

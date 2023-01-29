@@ -40,13 +40,13 @@ variable "frontend_subnet_id" {
 }
 
 variable "frontend_subnet_name" {
-  description = "(Optional) Frontend virtual network name to use when in private mode. Ignored if `frontend_subnet_id` is set."
+  description = "(Optional) Frontend virtual network name to use when in private mode. Conflict with `frontend_subnet_id`."
   type        = string
   default     = ""
 }
 
 variable "frontend_vnet_name" {
-  description = "(Optional) Frontend virtual network name to use when in private mode. Ignored if `frontend_subnet_id` is set."
+  description = "(Optional) Frontend virtual network name to use when in private mode. Conflict with `frontend_subnet_id`."
   type        = string
   default     = ""
 }
