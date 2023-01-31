@@ -31,6 +31,7 @@ resource "azurerm_lb" "azlb" {
   resource_group_name = data.azurerm_resource_group.azlb.name
   edge_zone           = var.edge_zone
   sku                 = var.lb_sku
+  sku_tier            = var.lb_sku_tier
   tags                = var.tags
 
   frontend_ip_configuration {
