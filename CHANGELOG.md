@@ -8,6 +8,7 @@
 - Adding Microsoft SECURITY.MD [\#62](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/62) ([microsoft-github-policy-service[bot]](https://github.com/apps/microsoft-github-policy-service))
 - Bump github.com/Azure/terraform-module-test-helper from 0.6.0 to 0.7.1 in /test [\#61](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/61) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Add version upgrade test [\#60](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/60) ([lonegunmanb](https://github.com/lonegunmanb))
+- Add new variables to set subnet by name [\#59](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/59) ([jiaweitao001](https://github.com/jiaweitao001))
 
 ## [4.0.0](https://github.com/Azure/terraform-azurerm-loadbalancer/tree/4.0.0) (2023-01-17)
 
