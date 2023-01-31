@@ -3,6 +3,18 @@ data "azurerm_resource_group" "azlb" {
   name = var.resource_group_name
 }
 
+data "azurerm_subnet" "snet" {
+  count = (var.frontend_subnet_name != null && var.frontend_subnet_name != "") ? 1 : 0
+
+  name                 = var.frontend_subnet_name
+  resource_group_name  = data.azurerm_resource_group.azlb.name
+  virtual_network_name = var.frontend_vnet_name
+}
+
+locals {
+  data_subnet_id = try(data.azurerm_subnet.snet[0].id, "")
+}
+
 resource "azurerm_public_ip" "azlb" {
   count = var.type == "public" ? 1 : 0
 
@@ -39,7 +51,14 @@ resource "azurerm_lb" "azlb" {
     private_ip_address            = var.frontend_private_ip_address
     private_ip_address_allocation = var.frontend_private_ip_address_allocation
     public_ip_address_id          = try(azurerm_public_ip.azlb[0].id, "")
-    subnet_id                     = var.frontend_subnet_id
+    subnet_id                     = local.subnet_id
+  }
+
+  lifecycle {
+    precondition {
+      condition     = var.frontend_subnet_name == null || var.frontend_subnet_name == "" || var.frontend_subnet_id == null || var.frontend_subnet_id == ""
+      error_message = "frontend_subnet_name or frontend_vent_name cannot exist if frontend_subnet_id exists."
+    }
   }
 }
 

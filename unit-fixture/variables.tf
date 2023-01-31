@@ -81,12 +81,6 @@ variable "lb_sku" {
   default     = "Basic"
 }
 
-variable "lb_sku_tier" {
-  description = "(Optional) The SKU tier of this Load Balancer. Possible values are `Global` and `Regional`. Defaults to `Regional`. Changing this forces a new resource to be created."
-  type        = string
-  default     = "Regional"
-}
-
 variable "location" {
   description = "(Optional) The location/region where the core network will be created. The full list of Azure regions can be found at https://azure.microsoft.com/regions"
   type        = string
