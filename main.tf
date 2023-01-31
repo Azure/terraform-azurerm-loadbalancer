@@ -4,7 +4,7 @@ data "azurerm_resource_group" "azlb" {
 }
 
 data "azurerm_subnet" "snet" {
-  count = var.frontend_subnet_name != "" ? 1 : 0
+  count = (var.frontend_subnet_name != null && var.frontend_subnet_name != "") ? 1 : 0
 
   name                 = var.frontend_subnet_name
   resource_group_name  = data.azurerm_resource_group.azlb.name
@@ -55,7 +55,7 @@ resource "azurerm_lb" "azlb" {
 
   lifecycle {
     precondition {
-      condition     = try(coalesce(var.frontend_subnet_name, var.frontend_subnet_id), "") != ""
+      condition     = var.frontend_subnet_name == null || var.frontend_subnet_name == "" || var.frontend_subnet_id == null || var.frontend_subnet_id == ""
       error_message = "frontend_subnet_name or frontend_vent_name cannot exist if frontend_subnet_id exists."
     }
   }
