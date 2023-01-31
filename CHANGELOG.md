@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Add support for `private_ip_address_version` [\#65](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/65) ([jiaweitao001](https://github.com/jiaweitao001))
 - Add support for `lb_sku_tier` [\#64](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/64) ([jiaweitao001](https://github.com/jiaweitao001))
 - Adding Microsoft SECURITY.MD [\#62](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/62) ([microsoft-github-policy-service[bot]](https://github.com/apps/microsoft-github-policy-service))
 - Bump github.com/Azure/terraform-module-test-helper from 0.6.0 to 0.7.1 in /test [\#61](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/61) ([dependabot[bot]](https://github.com/apps/dependabot))
