@@ -63,6 +63,12 @@ variable "frontend_vnet_name" {
   default     = ""
 }
 
+variable "lb_enable_floating_ip" {
+  description = "(Optional) Are the Floating IPs enabled for this Load Balancer Rule? A floating IP is reassigned to a secondary server in case the primary server fails. Required to configure a SQL AlwaysOn Availability Group. Defaults to `false`."
+  type        = bool
+  default     = false
+}
+
 variable "lb_port" {
   description = "Protocols to be used for lb rules. Format as [frontend_port, protocol, backend_port]"
   type        = map(any)
