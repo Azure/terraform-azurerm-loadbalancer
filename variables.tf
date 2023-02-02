@@ -63,7 +63,7 @@ variable "frontend_vnet_name" {
   default     = ""
 }
 
-variable "lb_enable_floating_ip" {
+variable "lb_floating_ip_enabled" {
   description = "(Optional) Are the Floating IPs enabled for this Load Balancer Rule? A floating IP is reassigned to a secondary server in case the primary server fails. Required to configure a SQL AlwaysOn Availability Group. Defaults to `false`."
   type        = bool
   default     = false
