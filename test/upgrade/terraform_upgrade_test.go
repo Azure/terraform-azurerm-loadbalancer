@@ -18,10 +18,12 @@ func TestExamplesUpgrade(t *testing.T) {
 	}
 	examples := []string{
 		"examples/startup",
+		"examples/set_subnet_by_name",
 	}
 	for _, example := range examples {
-		t.Run(example, func(t *testing.T) {
-			test_helper.ModuleUpgradeTest(t, "Azure", "terraform-azurerm-loadbalancer", example, currentRoot, terraform.Options{
+		e := example
+		t.Run(e, func(t *testing.T) {
+			test_helper.ModuleUpgradeTest(t, "Azure", "terraform-azurerm-loadbalancer", e, currentRoot, terraform.Options{
 				Upgrade: true,
 			}, currentMajorVersion)
 		})

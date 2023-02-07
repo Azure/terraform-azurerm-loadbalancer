@@ -14,8 +14,9 @@ func TestExmaples(t *testing.T) {
 	}
 
 	for _, v := range testPaths {
-		t.Run(v, func(t *testing.T) {
-			test_helper.RunE2ETest(t, "../../", v, terraform.Options{
+		p := v
+		t.Run(p, func(t *testing.T) {
+			test_helper.RunE2ETest(t, "../../", p, terraform.Options{
 				Upgrade: true,
 			}, func(t *testing.T, output test_helper.TerraformOutput) {})
 		})
