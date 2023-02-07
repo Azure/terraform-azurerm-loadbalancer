@@ -5,6 +5,7 @@
 **Merged pull requests:**
 
 - Capture the iterator variable to avoid concurrent test error [\#69](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/69) ([lonegunmanb](https://github.com/lonegunmanb))
+- Bump github.com/Azure/terraform-module-test-helper from 0.7.1 to 0.8.1 in /test [\#68](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/68) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Add support for `enable_floating_ip` [\#66](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/66) ([jiaweitao001](https://github.com/jiaweitao001))
 
 ## [4.1.0](https://github.com/Azure/terraform-azurerm-loadbalancer/tree/4.1.0) (2023-01-31)
