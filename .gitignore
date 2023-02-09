@@ -50,3 +50,6 @@ Gemfile.lock
 tfmod-scaffold
 README-generated.md
 scripts
+
+/TestRecord
+**/TestRecord.md.tmp
