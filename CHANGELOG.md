@@ -4,6 +4,12 @@
 
 **Merged pull requests:**
 
+- Bump github.com/stretchr/testify from 1.8.1 to 1.8.2 in /test [\#75](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/75) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump github.com/gruntwork-io/terratest from 0.41.10 to 0.41.11 in /test [\#74](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/74) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump github.com/Azure/terraform-module-test-helper from 0.8.1 to 0.9.1 in /test [\#73](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/73) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump golang.org/x/net from 0.1.0 to 0.7.0 in /test [\#72](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/72) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump github.com/hashicorp/go-getter from 1.6.1 to 1.7.0 in /test [\#71](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/71) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump github.com/hashicorp/go-getter/v2 from 2.1.1 to 2.2.0 in /test [\#70](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/70) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Capture the iterator variable to avoid concurrent test error [\#69](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/69) ([lonegunmanb](https://github.com/lonegunmanb))
 - Bump github.com/Azure/terraform-module-test-helper from 0.7.1 to 0.8.1 in /test [\#68](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/68) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Add support for `enable_floating_ip` [\#66](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/66) ([jiaweitao001](https://github.com/jiaweitao001))
