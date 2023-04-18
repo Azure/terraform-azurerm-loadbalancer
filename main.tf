@@ -51,7 +51,7 @@ resource "azurerm_lb" "azlb" {
     private_ip_address            = var.frontend_private_ip_address
     private_ip_address_allocation = var.frontend_private_ip_address_allocation
     private_ip_address_version    = var.frontend_private_ip_address_version
-    public_ip_address_id          = try(azurerm_public_ip.azlb[0].id, "")
+    public_ip_address_id          = try(azurerm_public_ip.azlb[0].id, null)
     subnet_id                     = local.subnet_id
   }
 
