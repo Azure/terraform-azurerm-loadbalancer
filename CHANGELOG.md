@@ -7,6 +7,8 @@
 - \[bugfix\] - Change default value to null to solve the issue [\#85](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/85) ([lonegunmanb](https://github.com/lonegunmanb))
 - Bump github.com/Azure/terraform-module-test-helper from 0.9.1 to 0.12.0 in /test [\#79](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/79) ([dependabot[bot]](https://github.com/apps/dependabot))
 
+## [4.2.1](https://github.com/Azure/terraform-azurerm-loadbalancer/tree/4.2.1) (2023-04-18)
+
 ## [4.2.0](https://github.com/Azure/terraform-azurerm-loadbalancer/tree/4.2.0) (2023-02-28)
 
 **Merged pull requests:**
