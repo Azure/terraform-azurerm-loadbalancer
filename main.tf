@@ -33,8 +33,15 @@ resource "azurerm_public_ip" "azlb" {
   reverse_fqdn            = var.pip_reverse_fqdn
   sku                     = var.pip_sku
   sku_tier                = var.pip_sku_tier
-  tags                    = var.tags
-  zones                   = var.pip_zones
+  tags = merge(var.tags, (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
+    avm_git_commit           = "d8466522dbee909d833e8f6c51c4c7ec587496d5"
+    avm_git_file             = "main.tf"
+    avm_git_last_modified_at = "2023-01-16 05:50:14"
+    avm_git_org              = "Azure"
+    avm_git_repo             = "terraform-azurerm-loadbalancer"
+    avm_yor_trace            = "877d606e-5a28-408f-9542-aad1235ab6ff"
+  } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/))
+  zones = var.pip_zones
 }
 
 resource "azurerm_lb" "azlb" {
@@ -44,7 +51,14 @@ resource "azurerm_lb" "azlb" {
   edge_zone           = var.edge_zone
   sku                 = var.lb_sku
   sku_tier            = var.lb_sku_tier
-  tags                = var.tags
+  tags = merge(var.tags, (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
+    avm_git_commit           = "3b4dfbcc5c5c3ffe20327f21ab16ef2464ed94aa"
+    avm_git_file             = "main.tf"
+    avm_git_last_modified_at = "2023-01-31 02:40:02"
+    avm_git_org              = "Azure"
+    avm_git_repo             = "terraform-azurerm-loadbalancer"
+    avm_yor_trace            = "da181ad6-1a9b-4e9f-9a85-aeb1ad644697"
+  } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/))
 
   frontend_ip_configuration {
     name                          = var.frontend_name
