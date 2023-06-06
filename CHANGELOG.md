@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Bump github.com/Azure/terraform-module-test-helper from 0.13.0 to 0.14.0 in /test [\#94](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/94) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Add tracing tag toggle variables, update tflint config [\#87](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/87) ([lonegunmanb](https://github.com/lonegunmanb))
 - \[bugfix\] - Change default value to null to solve the issue [\#85](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/85) ([lonegunmanb](https://github.com/lonegunmanb))
 - Bump github.com/Azure/terraform-module-test-helper from 0.12.0 to 0.13.0 in /test [\#82](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/82) ([dependabot[bot]](https://github.com/apps/dependabot))
