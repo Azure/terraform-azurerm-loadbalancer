@@ -21,6 +21,12 @@ variable "edge_zone" {
   description = "(Optional) Specifies the Edge Zone within the Azure Region where this Public IP and Load Balancer should exist. Changing this forces new resources to be created."
 }
 
+variable "frontend_ip_zones" {
+  type        = list(string)
+  default     = null
+  description = "(Optional) A collection containing the availability zone to allocate the IP in. Changing this forces a new resource to be created. Availability Zones are only supported with a [Standard SKU](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#standard) and [in select regions](https://docs.microsoft.com/azure/availability-zones/az-overview) at this time. Standard SKU Public IP Addresses that do not specify a zone are **not** zone-redundant by default."
+}
+
 variable "frontend_name" {
   type        = string
   default     = "myPublicIP"
