@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased](https://github.com/Azure/terraform-azurerm-loadbalancer/tree/HEAD)
+
+**Merged pull requests:**
+
+- Bump github.com/Azure/terraform-module-test-helper from 0.14.0 to 0.15.0 in /test [\#101](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/101) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [4.3.0](https://github.com/Azure/terraform-azurerm-loadbalancer/tree/4.3.0) (2023-06-06)
 
 **Merged pull requests:**
