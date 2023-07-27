@@ -71,6 +71,7 @@ resource "azurerm_lb" "azlb" {
     private_ip_address_version    = var.frontend_private_ip_address_version
     public_ip_address_id          = try(azurerm_public_ip.azlb[0].id, null)
     subnet_id                     = local.subnet_id
+    zones                         = var.frontend_ip_zones
   }
 
   lifecycle {
