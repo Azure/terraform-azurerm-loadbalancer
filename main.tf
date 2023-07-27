@@ -39,7 +39,7 @@ resource "azurerm_public_ip" "azlb" {
     avm_git_last_modified_at = "2023-01-16 05:50:14"
     avm_git_org              = "Azure"
     avm_git_repo             = "terraform-azurerm-loadbalancer"
-    avm_yor_trace            = "108944a7-8d1d-4055-8221-69e0bbba3c7a"
+    avm_yor_trace            = "c45c7d7f-6a88-4c2c-9d68-38178cb39101"
     } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/), (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
     avm_yor_name = "azlb"
   } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/))
@@ -59,7 +59,7 @@ resource "azurerm_lb" "azlb" {
     avm_git_last_modified_at = "2023-01-31 02:40:02"
     avm_git_org              = "Azure"
     avm_git_repo             = "terraform-azurerm-loadbalancer"
-    avm_yor_trace            = "1114d4fe-2079-444e-8da1-98f2520257fe"
+    avm_yor_trace            = "672659d4-621e-4a07-9e8f-213e02f8ce0a"
     } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/), (/*<box>*/ (var.tracing_tags_enabled ? { for k, v in /*</box>*/ {
     avm_yor_name = "azlb"
   } /*<box>*/ : replace(k, "avm_", var.tracing_tags_prefix) => v } : {}) /*</box>*/))
