@@ -384,8 +384,8 @@ github.com/gorilla/websocket v1.4.2/go.mod h1:YR8l580nyteQvAITg2hZ9XVh4b55+EU/ad
 github.com/grpc-ecosystem/grpc-gateway v1.16.0/go.mod h1:BDjrQk3hbvj6Nolgz8mAMFbcEtjT1g+wF4CSlocrBnw=
 github.com/gruntwork-io/go-commons v0.17.0 h1:ZwCO7P+NAdH1/NcLmf0kK/SZ/egqWIgHujlbmSzFDX4=
 github.com/gruntwork-io/go-commons v0.17.0/go.mod h1:S98JcR7irPD1bcruSvnqupg+WSJEJ6xaM89fpUZVISk=
-github.com/gruntwork-io/terratest v0.43.8 h1:6JNZE1REO5B1AGbTvBvMDNBX/gxiO4LTkth5uFqBCbU=
-github.com/gruntwork-io/terratest v0.43.8/go.mod h1:Tw+6/fcJFiBPpsx9NNSkLG5oHKIeaqiJHVLpQ+ORIfQ=
+github.com/gruntwork-io/terratest v0.43.11 h1:k3U5lZjiNa38rqcTx/dus8cCaJY7qxShGIuGLeLfj/s=
+github.com/gruntwork-io/terratest v0.43.11/go.mod h1:Tw+6/fcJFiBPpsx9NNSkLG5oHKIeaqiJHVLpQ+ORIfQ=
 github.com/hashicorp/errwrap v1.0.0 h1:hLrqtEDnRye3+sgx6z4qVLNuviH3MR5aQ0ykNJa/UYA=
 github.com/hashicorp/errwrap v1.0.0/go.mod h1:YH+1FKiLXxHSkmPseP+kNlulaMuP3n2brvKWEqk/Jc4=
 github.com/hashicorp/go-cleanhttp v0.5.2 h1:035FKYIWjmULyFRBKPs8TBQoi0x6d9G4xc9neXJWAZQ=
