@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Bump github.com/Azure/terraform-module-test-helper from 0.15.0 to 0.16.0 in /test [\#103](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/103) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump github.com/Azure/terraform-module-test-helper from 0.14.0 to 0.15.0 in /test [\#101](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/101) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Configurable frontend\_ip\_zones [\#96](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/96) ([r2ronoha](https://github.com/r2ronoha))
 
