@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased](https://github.com/Azure/terraform-azurerm-loadbalancer/tree/HEAD)
+
+**Merged pull requests:**
+
+- Use oidc as authentication method [\#118](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/118) ([lonegunmanb](https://github.com/lonegunmanb))
+
 ## [4.4.0](https://github.com/Azure/terraform-azurerm-loadbalancer/tree/4.4.0) (2023-08-07)
 
 **Merged pull requests:**
