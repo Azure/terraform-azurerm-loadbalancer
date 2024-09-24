@@ -4,6 +4,7 @@
 
 **Merged pull requests:**
 
+- Bump github.com/Azure/terraform-module-test-helper in /test \(\#119\) [\#120](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/120) ([lonegunmanb](https://github.com/lonegunmanb))
 - Use oidc as authentication method [\#118](https://github.com/Azure/terraform-azurerm-loadbalancer/pull/118) ([lonegunmanb](https://github.com/lonegunmanb))
 
 ## [4.4.0](https://github.com/Azure/terraform-azurerm-loadbalancer/tree/4.4.0) (2023-08-07)
