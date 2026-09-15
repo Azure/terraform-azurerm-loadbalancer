@@ -1,3 +1,6 @@
+> [!WARNING]
+> This module is no longer maintained, please consider migrating to [Azure Verified Modules](https://aka.ms/avm).
+
 # terraform-azurerm-loadbalancer
 
 A terraform module to provide load balancers in Azure with the following
